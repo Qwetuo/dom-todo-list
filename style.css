@@ -22,3 +22,8 @@ ul li {
 .lineThrough {
 	text-decoration: line-through;
 }
+
+.cancelBtn {
+	margin-left: 20px;
+	text-decoration: none;
+}

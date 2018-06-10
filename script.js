@@ -45,10 +45,7 @@ linkLi.forEach(loopEach);
 
 // - Add a `<input>` HTML element and a `<button>Add Todo</button>` HTML element.
 
-// const newLi = document.createElement('li');;
 const newInput = document.createElement('input');
-
-// document.getElementById('todo-list').appendChild(newLi).appendChild(newInput).insertAdjacentHTML('afterend', '<button>Add ToDo</button>');
 document.body.appendChild(newInput).insertAdjacentHTML('afterend', '<button>Add ToDo</button>');
 
 
@@ -61,9 +58,11 @@ document.querySelector('button').addEventListener('click', () => {
 // (i) `createElement`,
 	var addNewLi = document.createElement('li');
 // // (ii) change any attributes if necessary,
+	loopEach(addNewLi);
 	addNewLi.textContent = document.querySelector('input').value;
 // // (iii) use `appendChild` to append it to the appropriate HTML element)
 	document.getElementById('todo-list').appendChild(addNewLi);
+	addNewBtn(addNewLi);
 	document.querySelector('input').value = '';
 	});
 
@@ -71,5 +70,35 @@ document.querySelector('button').addEventListener('click', () => {
 
 // - Bonus: Allow user to create a todo when they press the <kbd>Enter</kbd> key
 
-const newBtn = document.createElement('button')
-linkLi.forEach(appendChild(newBtn))
+
+document.addEventListener('keypress', () => {
+	if(event.keyCode == 13 && document.querySelector('input').value != '') {
+		var addNewLi = document.createElement('li');
+		loopEach(addNewLi);
+		addNewLi.textContent = document.querySelector('input').value;
+		document.getElementById('todo-list').appendChild(addNewLi);
+		addNewBtn(addNewLi);
+		document.querySelector('input').value = '';
+		}
+	});
+
+// Add cancel buttons
+
+function addNewBtn(eachLi){
+	const newBtn = document.createElement('button');
+	newBtn.textContent = 'x';
+	newBtn.classList.add('cancelBtn');
+	addCancelf(newBtn);
+	eachLi.appendChild(newBtn)
+};
+
+linkLi.forEach(addNewBtn);
+
+var cancelBtns = document.querySelectorAll('.cancelBtn');
+
+function addCancelf(eachBtn){
+	eachBtn.addEventListener('click', (event) => {
+		var liToRemove = event.target.parentNode;
+		liToRemove.remove();
+})
+};
