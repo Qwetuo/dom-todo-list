@@ -27,13 +27,17 @@ tasks.forEach(task => {
 
 var listItems = document.querySelectorAll("li");
 
-function addClickHandler(eachLi) {
-  eachLi.addEventListener("click", event => {
-    event.target.classList.toggle("lineThrough");
-  });
-}
+// function addClickHandler(eachLi) {
+//   eachLi.addEventListener("click", event => {
+//     event.target.classList.toggle("lineThrough");
+//   });
+// }
 
-listItems.forEach(addClickHandler);
+// listItems.forEach(addClickHandler);
+
+document.querySelector('ul').addEventListener("click", event => {
+	event.target.classList.toggle("lineThrough")
+});
 
 // ### Adding more To-Do items
 
@@ -50,7 +54,7 @@ document.body
 
 function addToDoItem() {
 	var addNewLi = document.createElement("li");
-    addClickHandler(addNewLi);
+    // addClickHandler(addNewLi);
     addNewLi.textContent = document.querySelector("input").value;
     document.getElementById("todo-list").appendChild(addNewLi);
     addNewBtn(addNewLi);
